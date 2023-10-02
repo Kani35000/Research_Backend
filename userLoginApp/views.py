@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import User
 import tweepy
 
+
 # Your app's API/consumer key and secret can be found under the Consumer Keys
 # section of the Keys and Tokens tab of your app, under the
 # Twitter Developer Portal Projects & Apps page at
