@@ -18,5 +18,6 @@ from django.urls import path
 import userLoginApp.views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', userLoginApp.views.home, name='home'),
+    path('', userLoginApp.views.home),
 ]
+# , name='home' putin the end of path
