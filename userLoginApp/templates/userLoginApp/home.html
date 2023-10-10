@@ -34,7 +34,8 @@
     
     <main class="container mt-5">
         <h1>LOGIN TWITTER</h1>
-    <form action="/home" method="POST" class="validated-form">
+    <form action="/submitform" >
+       {% comment %} {% csrf_token %} {% endcomment %}
         <div class="mb-3">
             <label class="form-label" for="username">Username</label>
             <input class="form-control" type="text" id="username" name="username" required>
@@ -53,7 +54,7 @@
     </form>
     {% comment %} Add an if condition for displaying tweets {% endcomment %}
     <div class="mt-5">
-        <form >
+        <form action="/" method="post">
             <div class="mb-3">
                 <label class="form-label" for="rating">Tweets</label>
                 <textarea class="form-control" name="review[body]" id="body" cols="50" rows="3" required></textarea>

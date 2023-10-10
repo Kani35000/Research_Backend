@@ -19,5 +19,7 @@ import userLoginApp.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', userLoginApp.views.home),
+    path('submitform', userLoginApp.views.submitform),
+   
     path('aboutresearch/', userLoginApp.views.aboutresearch, name='aboutresearch'),
 ]
