@@ -19,5 +19,5 @@ import userLoginApp.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', userLoginApp.views.home),
-    path('aboutresearch/', userLoginApp.views.home, name='aboutresearch'),
+    path('aboutresearch/', userLoginApp.views.aboutresearch, name='aboutresearch'),
 ]
