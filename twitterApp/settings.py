@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['https://researchnortheastern-f0da7b5714f0.herokuapp.com/', '12
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -54,11 +55,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'twitterApp.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        # 'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -66,6 +68,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+        #     'loaders': [
+        #     'django.template.loaders.app_directories.Loader',
+        #     'django.template.loaders.filesystem.Loader',
+        # ],
         },
     },
 ]
@@ -79,7 +85,7 @@ WSGI_APPLICATION = 'twitterApp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'researchproject',
+        'NAME': 'researchdb',
         'USER': 'kani',
         'PASSWORD':'TDjakes35',
         'HOST': 'localhost',
