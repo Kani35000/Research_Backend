@@ -39,7 +39,7 @@
     </main>
     <div>
      
-        {% if id %}
+        
           <p>Django user database id: {{ id }}</p>
           <p>Django username: {{ username }}</p>
           <p>User is authenticated: {{ is_authenticated }}</p>
@@ -49,7 +49,7 @@
           {% comment %} <p>User first name: {{ first_name }}</p> {% endcomment %}
           <a href="{% url 'twitter_logout' %}">Logout</a>
           <li><a href="/logout">Log Out</a></li>
-        {% endif %}
+       
         
        
   </div>
