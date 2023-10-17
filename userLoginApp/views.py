@@ -58,7 +58,7 @@ def twitter_login(request):
 
 
 def twitter_callback(request):
-    print("kani")
+   
     if 'denied' in request.GET:
         messages.add_message(request, messages.ERROR, 'Unable to login or login canceled. Please try again.')
         return render(request, 'authorization/error_page.html')
@@ -96,7 +96,7 @@ def twitter_callback(request):
 @login_required
 @twitter_login_required
 def index(request):
-    return render(request, 'authorization/home.html')
+    return render(request, 'userLoginApp/home.html')
     
     
 

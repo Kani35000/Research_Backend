@@ -37,6 +37,21 @@
         <a href="https://researchnortheastern-f0da7b5714f0.herokuapp.com/twitter_login/">Signing twitter</a>
     
     </main>
+    <div>
+      {% if user.is_authenticated %}
+        <p>Django user database id: {{ user.id }}</p>
+        <p>Django username: {{ user.username }}</p>
+        <p>User is authenticated: {{ user.is_authenticated }}</p>
+        <p>User is active: {{ user.is_active }}</p>
+        <p>User last login: {{ user.last_login }}</p>
+        <p>User date joined: {{ user.date_joined }}</p>
+        <p>User first name: {{ user.first_name }}</p>
+        <a href="{% url 'twitter_logout' %}">Logout</a>
+        <li><a href="/logout">Log Out</a></li>
+        {% else %}
+        
+        {% endif %}
+  </div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
 <script src="/public/javascripts/validateForms.js"></script>
