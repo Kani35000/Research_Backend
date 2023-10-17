@@ -7,7 +7,6 @@ from django.views.generic import View
 
 
 
-
 from django.apps import AppConfig
 
 from django.contrib.auth import login, logout
@@ -85,7 +84,7 @@ def twitter_callback(request):
                     name= info[0]["name"]
                     id = user.args
                     # return redirect('index')
-                    return render(request, 'userLoginApp/home.html', user, name, id)
+                    return render(request, 'userLoginApp/home.html', {"user": user} , name, id)
             else:
                 messages.add_message(request, messages.ERROR, 'Unable to get profile details. Please try again.')
                 return render(request, 'authorization/error_page.html')
@@ -121,3 +120,24 @@ def twitter_logout(request):
 # def home(request):
 #     logout(request)
 #     return render(request, 'home.html')
+
+
+
+def create_api():
+    # Replace with your Twitter API keys
+    consumer_key = 'sVgstwrdGQm2PQXSir9KaOkYP'
+    consumer_secret = 'iOAhAFHK8r84KvjA9MFiFgAeAM8hB3gjJuxnil3dDeMVV1kA4l'
+    access_token = '316095201-BzLPVTiufW84Jidza5cRx8nNgd39Z7I4Fw6VHviK'
+    access_token_secret = 'npCvY7nRsqfjPkwUvmMX9FhxR4jYltRkXbcEmISV7kWgU'
+
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_token, access_token_secret)
+
+    return tweepy.API(auth)
+
+
+
+def twitter_timeline(request):
+    api = create_api()
+    tweets = api.user_timeline(screen_name='twitter_username', count=10)
+    return render(request, 'tweepy.html', {'tweets': tweets})

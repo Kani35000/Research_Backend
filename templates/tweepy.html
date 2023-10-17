@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Twitter Timeline</title>
+</head>
+<body>
+    <h1>Twitter Timeline</h1>
+    <ul>
+        {% for tweet in tweets %}
+            <li>{{ tweet.text }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
