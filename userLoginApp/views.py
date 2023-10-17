@@ -96,8 +96,14 @@ def twitter_callback(request):
 @login_required
 @twitter_login_required
 def index(request):
-    return render(request, 'userLoginApp/home.html')
-    
+    if request.user:
+        id = request.user.id
+        username= requst.user.username
+        is_authenticated= requst.user.is_authenticated
+        is_active= requst.user.is_active
+        date_joined= requst.user.date_joined        
+        return render(request, 'userLoginApp/home.html', id, date_joined, is_active, is_authenticated, username)
+
     
 
 
