@@ -82,7 +82,7 @@ def twitter_callback(request):
                 print(user, "************************")
                 if user is not None:
                     login(request, user)
-                    name= user["name"]
+                    name= user[user.args]
                     # return redirect('index')
                     return render(request, 'userLoginApp/home.html', user, name)
             else:
