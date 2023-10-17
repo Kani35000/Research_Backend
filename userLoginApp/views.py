@@ -82,9 +82,10 @@ def twitter_callback(request):
                 print(user, "************************")
                 if user is not None:
                     login(request, user)
-                    name= user[user.args]
+                    name= info[0]["name"]
+                    id = user.args
                     # return redirect('index')
-                    return render(request, 'userLoginApp/home.html', user, name)
+                    return render(request, 'userLoginApp/home.html', user, name, id)
             else:
                 messages.add_message(request, messages.ERROR, 'Unable to get profile details. Please try again.')
                 return render(request, 'authorization/error_page.html')
