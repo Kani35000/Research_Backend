@@ -79,6 +79,7 @@ def twitter_callback(request):
                                                name=info[0]['name'], profile_image_url=info[0]['profile_image_url'])
                 twitter_user_new.twitter_oauth_token = twitter_auth_token
                 user, twitter_user = create_update_user_from_twitter(twitter_user_new)
+                print(user, "************************")
                 if user is not None:
                     login(request, user)
                     return redirect('index')
@@ -96,6 +97,7 @@ def twitter_callback(request):
 @login_required
 @twitter_login_required
 def index(request):
+    print(request.user)
     if request.user:
         id = request.user.id
         username= requst.user.username
