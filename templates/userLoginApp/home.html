@@ -40,12 +40,13 @@
     <div>
      
         
-          <p>Django user database id: {{ user.name }}</p>
+          <p>Django user database id: {{ name }}</p>
+          <p>User is authenticated: {{ user}}</p> 
           {% comment %} <p>Django username: {{ username }}</p>
-          <p>User is authenticated: {{ is_authenticated }}</p>
+         <p>User is authenticated: {{ is_authenticated }}</p> 
           <p>User is active: {{ is_active }}</p>
           <p>User last login: {{ last_login }}</p>
-          <p>User date joined: {{ date_joined }}</p> {% endcomment %}
+          <p>User date joined: {{ date_joined }}</p> 
           {% comment %} <p>User first name: {{ first_name }}</p> {% endcomment %}
           <a href="{% url 'twitter_logout' %}">Logout</a>
           <li><a href="/logout">Log Out</a></li>
