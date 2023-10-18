@@ -85,8 +85,9 @@ def twitter_callback(request):
                     login(request, user)
                     name= info[0]["name"]
                     id = user.args
-                    # return redirect('index')
-                    return render(request, 'userLoginApp/home.html', {"user": user} , name, id)
+                    return redirect('index')
+                    
+                    # return render(request, 'userLoginApp/home.html', {"user": user} , name, id)
             else:
                 messages.add_message(request, messages.ERROR, 'Unable to get profile details. Please try again.')
                 return render(request, 'authorization/error_page.html')
@@ -104,10 +105,10 @@ def index(request):
     print(request.user)
     if request.user:
         id = request.user.id
-        username= requst.user.username
-        is_authenticated= requst.user.is_authenticated
-        is_active= requst.user.is_active
-        date_joined= requst.user.date_joined        
+        username= reqeust.user.username
+        is_authenticated= reqeust.user.is_authenticated
+        is_active= reqeust.user.is_active
+        date_joined= reqeust.user.date_joined        
         return render(request, 'userLoginApp/home.html', id, date_joined, is_active, is_authenticated, username)
 
     
@@ -119,141 +120,46 @@ def twitter_logout(request):
     return redirect('index')
 
 
-# def home(request):
-#     logout(request)
-#     return render(request, 'home.html')
 
 
-
-def create_api():
-    # Replace with your Twitter API keys
-    # consumer_key = 'sVgstwrdGQm2PQXSir9KaOkYP'
-    consumer_key = 'mh00Pas3yHx4BO0CcEUuIXIij'
-    # consumer_secret = 'iOAhAFHK8r84KvjA9MFiFgAeAM8hB3gjJuxnil3dDeMVV1kA4l'
-    consumer_secret = 'KPmSQFaopcsZD5FqFDXr129tIEdJlfb7hw82Dry8aCnhd3i2kR'
-    access_token = '316095201-JN50wcjT5SpZi2zBAjozXJSNLDvarkjIWtKaFh3B'
-    access_token_secret = 'mMOzbxi12MrF8NSD2I5Nv4sgGGBSjWJStdKpTdzKPi24D'
-    # auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-    # auth.set_access_token(access_token, access_token_secret)
-
-    return tweepy.API(auth)
-
-
-
-def twitter_timeline(request):
-    api = create_api()
-    tweets = api.user_timeline(screen_name='twitter_username', count=10)
-    return render(request, 'userLoginApp/home.html', {'tweets': tweets})
-
-
-consumer_key = 'mh00Pas3yHx4BO0CcEUuIXIij'
-# consumer_secret = 'iOAhAFHK8r84KvjA9MFiFgAeAM8hB3gjJuxnil3dDeMVV1kA4l'
-consumer_secret = 'KPmSQFaopcsZD5FqFDXr129tIEdJlfb7hw82Dry8aCnhd3i2kR'
-access_token = '316095201-JN50wcjT5SpZi2zBAjozXJSNLDvarkjIWtKaFh3B'
-
-access_token_secret = 'mMOzbxi12MrF8NSD2I5Nv4sgGGBSjWJStdKpTdzKPi24D'
-
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
-
-auth = tweepy.OAuth1UserHandler(
-    consumer_key, consumer_secret,
-    access_token, access_token_secret
-)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# last try starts here
-
-
-# File to save credentials
-CREDENTIALS_FILE = "twitter_credentials.json"
-
-def authenticate(request):
-    consumer_key = 'mh00Pas3yHx4BO0CcEUuIXIij'
-    # consumer_key = os.environ.get("CONSUMER_KEY")
-    consumer_secret = "KPmSQFaopcsZD5FqFDXr129tIEdJlfb7hw82Dry8aCnhd3i2kR"
-    # consumer_secret = os.environ.get("CONSUMER_SECRET")
-    if consumer_key is None or consumer_secret is None:
-        print("Consumer key or consumer secret is missing.")
-
-    # Check if credentials file exists
-    if os.path.exists(CREDENTIALS_FILE):
-        with open(CREDENTIALS_FILE, 'r') as file:
-            creds = json.load(file)
-            return creds["consumer_key"], creds["consumer_secret"], creds["access_token"], creds["access_token_secret"]
-
-    # If credentials file doesn't exist, proceed with authentication
-    # Get request token
-    request_token_url = "https://api.twitter.com/oauth/request_token?oauth_callback=oob&x_auth_access_type=write"
-    oauth = OAuth1Session(consumer_key, client_secret=consumer_secret)
-    fetch_response = oauth.fetch_request_token(request_token_url)
-
-    resource_owner_key = fetch_response.get("oauth_token")
-    resource_owner_secret = fetch_response.get("oauth_token_secret")
-
-    # Get authorization
-    base_authorization_url = "https://api.twitter.com/oauth/authorize"
-    authorization_url = oauth.authorization_url(base_authorization_url)
+def tweepytweet(request):
+    api = tweepy.API(auth)
     
-    print("Please go here and authorize:", authorization_url)
-    verifier = input("Paste the PIN here: ")
-
-    # Get the access token
-    access_token_url = "https://api.twitter.com/oauth/access_token"
-    oauth = OAuth1Session(
-        consumer_key,
-        client_secret=consumer_secret,
-        resource_owner_key=resource_owner_key,
-        resource_owner_secret=resource_owner_secret,
-        verifier=verifier,
-    )
-    oauth_tokens = oauth.fetch_access_token(access_token_url)
-
-    access_token = oauth_tokens["oauth_token"]
-    access_token_secret = oauth_tokens["oauth_token_secret"]
-
-    # Save the credentials to a file
-    with open(CREDENTIALS_FILE, 'w') as file:
-        json.dump({
-            "consumer_key": consumer_key,
-            "consumer_secret": consumer_secret,
-            "access_token": access_token,
-            "access_token_secret": access_token_secret
-        }, file)
-
-    return consumer_key, consumer_secret, access_token, access_token_secret
-
-if __name__ == '__main__':
-    authenticate()
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret, callback_url)
     
-     
+    session.set('request_token', auth.request_token['oauth_token'])
+    for tweet in tweepy.Cursor(api.search_tweets, q='tweepy').items(10):
+    print(tweet.text)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
