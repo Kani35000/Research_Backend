@@ -125,8 +125,10 @@ def twitter_logout(request):
 
 def create_api():
     # Replace with your Twitter API keys
-    consumer_key = 'sVgstwrdGQm2PQXSir9KaOkYP'
-    consumer_secret = 'iOAhAFHK8r84KvjA9MFiFgAeAM8hB3gjJuxnil3dDeMVV1kA4l'
+    # consumer_key = 'sVgstwrdGQm2PQXSir9KaOkYP'
+    consumer_key = 'YUJtUmx2TGtWUnJHRGdxUFotOW46MTpjaQ'
+    # consumer_secret = 'iOAhAFHK8r84KvjA9MFiFgAeAM8hB3gjJuxnil3dDeMVV1kA4l'
+    consumer_secret = '7Bj9_LwAkVFVT66HgzttmBPo2_OZln5svYkCt5ytkkOfO6XLg5'
     access_token = '316095201-BzLPVTiufW84Jidza5cRx8nNgd39Z7I4Fw6VHviK'
     access_token_secret = 'npCvY7nRsqfjPkwUvmMX9FhxR4jYltRkXbcEmISV7kWgU'
 
