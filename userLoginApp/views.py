@@ -129,7 +129,7 @@ def tweepytweet(request):
     
     session.set('request_token', auth.request_token['oauth_token'])
     for tweet in tweepy.Cursor(api.search_tweets, q='tweepy').items(10):
-    print(tweet.text)
+        print(tweet.text)
 
 
 
