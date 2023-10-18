@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     # 'userLoginApp',
     'authorization',
 ]
-LOGIN_URL = '/authorization/twitter_login/'
+LOGIN_URL = '/twitter_login/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
