@@ -14,23 +14,24 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 import userLoginApp.views
-from userLoginApp import views
+# from userLoginApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home),
-    path('submitform', views.submitform),
-    path('aboutresearch/', views.aboutresearch, name='aboutresearch'),
+    # path('', views.home),
+    # path('submitform', views.submitform),
+    # path('aboutresearch/', views.aboutresearch, name='aboutresearch'),
     
-    
+    # path('tweepytweet/', views.tweepytweet, name='tweepytweet'),
 
-    path('twitter_login/', views.twitter_login, name='twitter_login'),
-    path('twitter_callback/', views.twitter_callback, name='twitter_callback'),
-    path('twitter_logout/', views.twitter_logout, name='twitter_logout'),
+    # path('twitter_login/', views.twitter_login, name='twitter_login'),
+    # path('twitter_callback/', views.twitter_callback, name='twitter_callback'),
+    # path('twitter_logout/', views.twitter_logout, name='twitter_logout'),
     
+    path('authorization/', include('authorization.urls')),
     
 ]
 # from django.urls import path

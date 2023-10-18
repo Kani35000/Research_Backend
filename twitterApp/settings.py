@@ -40,8 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'userLoginApp',
+    # 'userLoginApp',
+    'authorization',
 ]
+LOGIN_URL = '/authorization/twitter_login/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -85,10 +87,10 @@ WSGI_APPLICATION = 'twitterApp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd8sa68d0f30tu6',
-        'USER': 'tosibbbhlkdxxx',
-        'PASSWORD':'4e58f9065d6c79e68f5c89de40663e3a41b6264d0202e737eb440be65933951c',
-        'HOST': 'ec2-52-45-200-167.compute-1.amazonaws.com',
+        'NAME': 'd7rtg2g1h89pjm',
+        'USER': 'wzbckrvvimkcxy',
+        'PASSWORD':'861dea2faab11afbf48b5e8aa52c8e833de53b8b68289f74940f9f479758b936',
+        'HOST': 'ec2-54-208-11-146.compute-1.amazonaws.com',
         'PORT':'5432'
 
     }
