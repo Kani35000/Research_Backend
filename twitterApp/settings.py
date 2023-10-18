@@ -58,11 +58,30 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'twitterApp.urls'
 LOGIN_URL = '/authorization/twitter_login/'
 
+# TEMPLATES = [
+#     {
+#         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+#         # 'DIRS': [],
+#         'DIRS': [os.path.join(BASE_DIR, 'templates')],
+#         'OPTIONS': {
+#             'context_processors': [
+#                 'django.template.context_processors.debug',
+#                 'django.template.context_processors.request',
+#                 'django.contrib.auth.context_processors.auth',
+#                 'django.contrib.messages.context_processors.messages',
+#             ],
+#         #     'loaders': [
+#         #     'django.template.loaders.app_directories.Loader',
+#         #     'django.template.loaders.filesystem.Loader',
+#         # ],
+#         },
+#     },
+# ]
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # 'DIRS': [],
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -70,14 +89,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-        #     'loaders': [
-        #     'django.template.loaders.app_directories.Loader',
-        #     'django.template.loaders.filesystem.Loader',
-        # ],
         },
     },
 ]
-
 WSGI_APPLICATION = 'twitterApp.wsgi.application'
 
 
