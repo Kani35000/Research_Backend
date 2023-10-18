@@ -6,6 +6,7 @@ import os
 class TwitterAPI:
     def __init__(self):
         self.api_key = 'mh00Pas3yHx4BO0CcEUuIXIij'
+        
         self.api_secret = 'KPmSQFaopcsZD5FqFDXr129tIEdJlfb7hw82Dry8aCnhd3i2kR'
         self.client_id = 'YUJtUmx2TGtWUnJHRGdxUFotOW46MTpjaQ'
         self.client_secret = '7Bj9_LwAkVFVT66HgzttmBPo2_OZln5svYkCt5ytkkOfO6XLg5'
