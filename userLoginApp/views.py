@@ -102,14 +102,12 @@ def twitter_callback(request):
 @login_required
 @twitter_login_required
 def index(request):
-    print(request.user)
-    if request.user:
-        id = request.user.id
-        username= reqeust.user.username
-        is_authenticated= reqeust.user.is_authenticated
-        is_active= reqeust.user.is_active
-        date_joined= reqeust.user.date_joined        
-        return render(request, 'userLoginApp/home.html', id, date_joined, is_active, is_authenticated, username)
+    api = tweepy.API(auth)
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret, callback_url)
+    session.set('request_token', auth.request_token['oauth_token'])
+    for tweet in tweepy.Cursor(api.search_tweets, q='tweepy').items(10):        
+        print(tweet.text)
+    return render(request, 'userLoginApp/home.html')
 
     
 
