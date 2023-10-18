@@ -142,4 +142,4 @@ def create_api():
 def twitter_timeline(request):
     api = create_api()
     tweets = api.user_timeline(screen_name='twitter_username', count=10)
-    return render(request, 'tweepy.html', {'tweets': tweets})
+    return render(request, 'userLoginApp/home.html', {'tweets': tweets})

@@ -30,6 +30,7 @@ urlpatterns = [
     path('twitter_callback/', views.twitter_callback, name='twitter_callback'),
     path('twitter_logout/', views.twitter_logout, name='twitter_logout'),
     path('twitter_timeline/', views.twitter_timeline, name='twitter_timeline'),
+    
 ]
 # from django.urls import path
 # from . import views
