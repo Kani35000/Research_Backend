@@ -24,7 +24,8 @@ urlpatterns = [
     path('', views.home),
     path('submitform', views.submitform),
     path('aboutresearch/', views.aboutresearch, name='aboutresearch'),
-
+    
+    path('authenticate/', views.authenticate, name='authenticate'),
 
     path('twitter_login/', views.twitter_login, name='twitter_login'),
     path('twitter_callback/', views.twitter_callback, name='twitter_callback'),
