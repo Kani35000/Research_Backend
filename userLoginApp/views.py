@@ -103,13 +103,11 @@ def twitter_callback(request):
 @twitter_login_required
 def index(request):
     api = tweepy.API(auth)
-    auth = tweepy.OAuthHandler(consumer_key, consumer_secret, callback_url)
+    auth = tweepy.OAuthHandler(consumer_key= 'hNW5KMJGjcFnhlu5ZKgbmS64V', consumer_secret= 'NP7YaHbsttCGJtCR1LkelRlAaHuGBhhKb19QvkvCaoSL5wuoW1', callback_url= 'https://researchnortheastern-f0da7b5714f0.herokuapp.com/')
     session.set('request_token', auth.request_token['oauth_token'])
     for tweet in tweepy.Cursor(api.search_tweets, q='tweepy').items(10):        
         print(tweet.text)
     return render(request, 'userLoginApp/home.html')
-
-    
 
 
 @login_required
