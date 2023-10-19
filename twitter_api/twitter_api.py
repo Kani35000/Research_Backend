@@ -10,7 +10,7 @@ class TwitterAPI:
         self.api_secret = 'NP7YaHbsttCGJtCR1LkelRlAaHuGBhhKb19QvkvCaoSL5wuoW1'
         self.client_id = 'YUJtUmx2TGtWUnJHRGdxUFotOW46MTpjaQ'
         self.client_secret = '7Bj9_LwAkVFVT66HgzttmBPo2_OZln5svYkCt5ytkkOfO6XLg5'
-        self.oauth_callback_url = 'https://researchnortheastern-f0da7b5714f0.herokuapp.com/index/'
+        self.oauth_callback_url = 'https://researchnortheastern-f0da7b5714f0.herokuapp.com/twitter_callback/'
 
     
 
