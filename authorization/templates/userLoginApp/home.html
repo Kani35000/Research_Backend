@@ -51,6 +51,7 @@
           <p>User date joined: {{ date_joined }}</p> 
           <p>User first name: {{ first_name }}</p>
           <p>User is authenticated: {{ user.followers()}}</p> 
+          <p>User is authenticated: {{ user.user_timeline()}}</p> 
           <a href="{% url 'twitter_logout' %}">Logout</a>
           
 
