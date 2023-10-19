@@ -96,3 +96,7 @@ def index2(request):
 #     if response.status_code != 200:
 #         raise Exception(response.status_code, response.text)
 #     return response.json()
+
+
+def aboutresearch(request):
+    return render(request, 'authorization/aboutresearch.html')
