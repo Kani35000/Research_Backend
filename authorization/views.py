@@ -54,9 +54,9 @@ def twitter_callback(request):
                 if user is not None:
                     login(request, user)
                     print(user)
-                    tweets = api.user_timeline(screen_name= user.username, count=10)
+                    # tweets = api.user_timeline(screen_name= user.username, count=10)
                     # return redirect('index2')
-                    return render(request, 'authorization/home.html', {'user': user}, {'tweets': tweets})
+                    return render(request, 'authorization/home.html', {'user': user})
                     
             else:
                 messages.add_message(request, messages.ERROR, 'Unable to get profile details. Please try again.')
@@ -88,9 +88,13 @@ def index2(request):
     return render(request, 'authorization/home.html')
 
 
+# params = {
+#     "start_time": "2023-01-01T00:00:00Z",
+#     "end_time": "2023-01-31T23:59:59Z",
+#     # Other parameters like 'query' can be added if needed.
+# }
 
-
-# def connect_to_endpoint(url, params):
+# def connect_to_endpoint(search_url = "https://api.twitter.com/2/tweets/counts/recent", params):
 #     response = requests.request("GET", search_url, auth=bearer_oauth, params=params)
 #     print(response.status_code)
 #     if response.status_code != 200:
