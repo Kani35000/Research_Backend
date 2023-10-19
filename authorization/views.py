@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import json
 
 # Create your views here.
 from django.contrib import messages
@@ -85,3 +86,13 @@ def twitter_logout(request):
 @twitter_login_required
 def index2(request):
     return render(request, 'authorization/home.html')
+
+
+
+
+# def connect_to_endpoint(url, params):
+#     response = requests.request("GET", search_url, auth=bearer_oauth, params=params)
+#     print(response.status_code)
+#     if response.status_code != 200:
+#         raise Exception(response.status_code, response.text)
+#     return response.json()
