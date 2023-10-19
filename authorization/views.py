@@ -75,3 +75,6 @@ def index(request):
 def twitter_logout(request):
     logout(request)
     return redirect('index')
+
+def index2(request):
+    return render(request, 'authorization/home.html')
