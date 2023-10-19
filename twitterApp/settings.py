@@ -56,7 +56,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'authorization.urls'
-LOGIN_URL = 'twitter_login/'
+LOGIN_URL = '/twitter_login/'
 
 # TEMPLATES = [
 #     {
