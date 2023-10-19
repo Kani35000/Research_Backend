@@ -53,9 +53,9 @@ def twitter_callback(request):
                 if user is not None:
                     login(request, user)
                     print(user)
-                    tweets = api.user_timeline(screen_name=screen_name, count=tweet_count)
+                    tweets = api.user_timeline(screen_name= user.username, count=10)
                     # return redirect('index2')
-                    return render(request, 'authorization/home.html', {'user': user})
+                    return render(request, 'authorization/home.html', {'user': user}, {'tweets': tweets})
                     
             else:
                 messages.add_message(request, messages.ERROR, 'Unable to get profile details. Please try again.')
