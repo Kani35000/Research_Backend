@@ -52,6 +52,7 @@ def twitter_callback(request):
                 user, twitter_user = create_update_user_from_twitter(twitter_user_new)
                 if user is not None:
                     login(request, user)
+                    print(user)
                     # return redirect('index2')
                     return render(request, 'authorization/home.html', {'user': user})
                     
