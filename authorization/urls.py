@@ -1,5 +1,5 @@
-from django.urls import path
-from . import views, include
+from django.urls import paths, include
+from . import view
 
 urlpatterns = [
     path('', views.index, name='index'),
