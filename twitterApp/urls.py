@@ -24,7 +24,7 @@ urlpatterns = [
     path('', include('authorization.urls')),
     path('admin/', admin.site.urls),
     
-    path('index/', views.index2, name='index2'),
+    path('index/', views.index, name='index'),
     path('twitter_login/', views.twitter_login, name='twitter_login'),
     # path('', views.home),
     # path('submitform', views.submitform),
