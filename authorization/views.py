@@ -53,6 +53,7 @@ def twitter_callback(request):
                 if user is not None:
                     login(request, user)
                     print(user)
+                    tweets = api.user_timeline(screen_name=screen_name, count=tweet_count)
                     # return redirect('index2')
                     return render(request, 'authorization/home.html', {'user': user})
                     
