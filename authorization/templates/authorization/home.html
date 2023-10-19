@@ -17,6 +17,14 @@
         <a href="{% url 'twitter_logout' %}">Logout</a>
         
     </p>
-    <p>Django user database id: {{ user.tweets }}</p>
+    <p>Django user database id: {{ user.text }}</p>
+    <p>tweepy: {{ name }}</p>
+          <h1>Twitter Timeline</h1>
+          <ul>
+              {% for tweet in tweets %}
+                  <li>{{ tweet.text }}</li>
+              {% endfor %}
+          </ul>
+        
 </body>
 </html>
