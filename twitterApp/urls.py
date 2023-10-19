@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-# from authorization import views
+from authorization import views
 #import userLoginApp.views
 # from userLoginApp import views
 
