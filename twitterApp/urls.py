@@ -21,7 +21,7 @@ from authorization import views
 
 
 urlpatterns = [
-    path('authorization/', include('authorization.urls')),
+    path('', include('authorization.urls')),
     path('admin/', admin.site.urls),
     path('index', views.index, name='index'),
     # path('', views.home),
