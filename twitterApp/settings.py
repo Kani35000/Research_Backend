@@ -55,8 +55,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'twitterApp.urls'
-LOGIN_URL = 'authorization/twitter_login/'
+ROOT_URLCONF = 'authorization.urls'
+LOGIN_URL = 'twitter_login/'
 
 # TEMPLATES = [
 #     {
