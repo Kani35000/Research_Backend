@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import json
+import pandas as pd
 
 # Create your views here.
 from django.contrib import messages
@@ -88,6 +89,20 @@ def index2(request):
     return render(request, 'authorization/home.html')
 
 
+def timeline(requests):
+    url = "https://api.twitter.com/2/tweets"
+    response = requests.get(url)
+    tweets = response.json()
+    print(tweets)
+
+    with open('tweets.json') as json_file:
+        data_list = json.load(json_file)
+
+        tweet_data_frame = pd.DataFrame.from_dict(data_list)
+        print(tweet_data_frame)
+        print(data_list)
+        return render(request, 'authorization/timeline.html', {'tweet_data_frame': w})   
+
 # params = {
 #     "start_time": "2023-01-01T00:00:00Z",
 #     "end_time": "2023-01-31T23:59:59Z",
@@ -95,12 +110,40 @@ def index2(request):
 # }
 
 # def timeline(request):
-#     response = requests.request("GET", search_url, auth=bearer_oauth, params=params)
-#     print(response.status_code)
-#     if response.status_code != 200:
-#         raise Exception(response.status_code, response.text)
-#     return render(request, 'authorization/timeline.html')
+#     import requests
+
+#     # Define the API endpoint URL
+#     url = "https://api.example.com/data"
+
+#     # Make a GET request to the API
+#     response = requests.get(url)
+
+#     # Check if the request was successful (status code 200 indicates success)
+#     if response.status_code == 200:
+#         # Parse the JSON response
+#         data = response.json()
+
+#         # Now 'data' contains the JSON data from the API
+#         print(data)
+#     else:
+#         # Handle the error if the request was not successful
+#         print(f"Request failed with status code: {response.status_code}")
+
+        
+#     with open('tweets.json') as json_file:
+#             data_list = json.load(json_file)
+
+#         tweet_data_frame = pd.DataFrame.from_dict(data_list)
+#         print(tweet_data_frame)
+#         print(data_list)
+#         return render(request, 'authorization/timeline.html')    
 
 
 def aboutresearch(request):
     return render(request, 'authorization/aboutresearch.html')
+
+
+
+
+
+

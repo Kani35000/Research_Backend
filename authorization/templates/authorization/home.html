@@ -35,7 +35,7 @@
 <body>
     <h1>Welcome</h1>
         <p>Twitter User: {{ user }}</p>
-        <p>Twitter User id: {{ user.id }}</p>
+        {% comment %} <p>Twitter User id: {{ user.id }}</p> {% endcomment %}
         <p>Twitter username: {{ user.username }}</p>
         <p>User is authenticated: {{ user.is_authenticated }}</p>
         <p>User is active: {{ user.is_active }}</p>
@@ -47,7 +47,7 @@
         
         
     </p>
-    <a href=""><h1>Twitter Timeline</h1></a>
+    <a href="/timeline/"><h1>Twitter Timeline In Table</h1></a>
     <a class="twitter-timeline" href="https://twitter.com/{{ user.username }}?ref_src=twsrc%5Etfw">Tweets by {{ user.username }}</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
     
           
