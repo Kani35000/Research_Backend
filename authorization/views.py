@@ -94,12 +94,12 @@ def index2(request):
 #     # Other parameters like 'query' can be added if needed.
 # }
 
-# def connect_to_endpoint(search_url = "https://api.twitter.com/2/tweets/counts/recent", params):
+# def timeline(request):
 #     response = requests.request("GET", search_url, auth=bearer_oauth, params=params)
 #     print(response.status_code)
 #     if response.status_code != 200:
 #         raise Exception(response.status_code, response.text)
-#     return response.json()
+#     return render(request, 'authorization/timeline.html')
 
 
 def aboutresearch(request):
