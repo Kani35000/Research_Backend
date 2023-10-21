@@ -4,6 +4,9 @@ import pandas as pd
 # from django.http import HttpResponse
 from django.http import JsonResponse
 
+import requests
+
+
 from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
@@ -89,9 +92,24 @@ def twitter_logout(request):
 def index2(request):
     return render(request, 'authorization/home.html')
 
+
+
+
 def timeline_in_json(request):
-    data = {"message": "https://api.twitter.com/2/tweets"}
-    return JsonResponse(data)
+    # Authentication: Retrieve user-specific tokens here.
+    user_access_token = get_user_access_token(request.user)  # Replace with your own logic.
+
+    # Define the Twitter API endpoint
+    api_url = "https://api.twitter.com/2/tweets"
+
+    # Set up headers with the user's access token
+    headers = {
+        "Authorization": f"Bearer {user_access_token}"
+    }
+
+    # Make the API request
+    response = requests.get(api_url, headers=headers)
+    return JsonResponse(response)
 
 
 def timeline(request):
