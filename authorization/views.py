@@ -95,7 +95,7 @@ def timeline(requests):
     tweets = response.json()
     print(tweets)
 
-    with open('tweets.json') as json_file:
+    with open('tweets') as json_file:
         data_list = json.load(json_file)
 
         tweet_data_frame = pd.DataFrame.from_dict(data_list)
