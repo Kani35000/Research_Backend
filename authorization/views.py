@@ -88,6 +88,7 @@ def index(request):
 
 @login_required
 def twitter_logout(request):
+    delete(TwitterUser.objects.get(id=pk))
     logout(request)
     return redirect('index')
 
