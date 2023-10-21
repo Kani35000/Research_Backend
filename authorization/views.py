@@ -38,7 +38,7 @@ def twitter_login(request):
 def twitter_callback(request):
     if 'denied' in request.GET:
         messages.add_message(request, messages.ERROR, 'Unable to login or login canceled. Please try again.')
-        return render(request, 'authorization/error_page.html')
+        return render(request, 'authorization/aboutresearch.html')
     twitter_api = TwitterAPI()
     oauth_verifier = request.GET.get('oauth_verifier')
     oauth_token = request.GET.get('oauth_token')
