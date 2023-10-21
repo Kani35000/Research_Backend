@@ -97,14 +97,14 @@ def index2(request):
 
 def timeline_in_json(request):
     # Authentication: Retrieve user-specific tokens here.
-    user_access_token = get_user_access_token(request.user)  # Replace with your own logic.
+    oauth_token = request.GET.get('oauth_token')
 
     # Define the Twitter API endpoint
     api_url = "https://api.twitter.com/2/tweets"
 
     # Set up headers with the user's access token
     headers = {
-        "Authorization": f"Bearer {user_access_token}"
+        "Authorization": f"Bearer {oauth_token}"
     }
 
     # Make the API request
