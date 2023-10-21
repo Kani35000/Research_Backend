@@ -69,15 +69,18 @@ def twitter_callback(request):
                     twitter_data = response.json()
                     return render(request, 'authorization/home.html', {'user': user}, {'twitter_data': twitter_data})
                     
-            else:
-                messages.add_message(request, messages.ERROR, 'Unable to get profile details. Please try again.')
-                return render(request, 'authorization/error_page.html')
-        else:
-            messages.add_message(request, messages.ERROR, 'Unable to get access token. Please try again.')
-            return render(request, 'authorization/error_page.html')
-    else:
-        messages.add_message(request, messages.ERROR, 'Unable to retrieve access token. Please try again.')
-        return render(request, 'authorization/error_page.html')
+            # else:
+            #     messages.add_message(request, messages.ERROR, 'Unable to get profile details. Please try again.')
+            #     return render(request, 'authorization/error_page.html')
+            return render(request, 'authorization/home.html', {'user': user}, {'twitter_data': twitter_data})
+        # else:
+        #     messages.add_message(request, messages.ERROR, 'Unable to get access token. Please try again.')
+        #     return render(request, 'authorization/error_page.html')
+        return render(request, 'authorization/home.html', {'user': user}, {'twitter_data': twitter_data})
+    # else:
+    #     messages.add_message(request, messages.ERROR, 'Unable to retrieve access token. Please try again.')
+    #     return render(request, 'authorization/error_page.html')
+    return render(request, 'authorization/home.html', {'user': user}, {'twitter_data': twitter_data})
 
 
 @login_required
