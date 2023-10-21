@@ -1,6 +1,6 @@
 from django.shortcuts import render
 import json
-# import pandas as pd
+import pandas as pd
 
 # Create your views here.
 from django.contrib import messages
@@ -89,19 +89,19 @@ def index2(request):
     return render(request, 'authorization/home.html')
 
 
-# def timeline(requests):
-#     url = "https://api.twitter.com/2/tweets"
-#     response = requests.get(url)
-#     tweets = response.json()
-#     print(tweets)
+def timeline(requests):
+    url = "https://api.twitter.com/2/tweets"
+    response = requests.get(url)
+    tweets = response.json()
+    print(tweets)
 
-#     with open('tweets.json') as json_file:
-#         data_list = json.load(json_file)
+    with open('tweets.json') as json_file:
+        data_list = json.load(json_file)
 
-#         tweet_data_frame = pd.DataFrame.from_dict(data_list)
-#         print(tweet_data_frame)
-#         print(data_list)
-#         return render(request, 'authorization/timeline.html', {'tweet_data_frame': w})   
+        tweet_data_frame = pd.DataFrame.from_dict(data_list)
+        print(tweet_data_frame)
+        print(data_list)
+        return render(request, 'authorization/timeline.html', {'tweet_data_frame': tweet_data_frame})   
 
 # params = {
 #     "start_time": "2023-01-01T00:00:00Z",
