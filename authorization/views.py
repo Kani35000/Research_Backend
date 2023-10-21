@@ -1,8 +1,9 @@
 from django.shortcuts import render
 import json
 import pandas as pd
+# from django.http import HttpResponse
+from django.http import JsonResponse
 
-# Create your views here.
 from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
@@ -88,11 +89,15 @@ def twitter_logout(request):
 def index2(request):
     return render(request, 'authorization/home.html')
 
+def timeline_in_json(request):
+    data = {"message": "https://api.twitter.com/2/tweets"}
+    return JsonResponse(data)
 
-def timeline(requests):
+
+def timeline(request):
     url = "https://api.twitter.com/2/tweets"
-    response = requests.get(url)
-    tweets = response.json()
+    # response = requests.get(url)
+    tweets = timeline_in_json()
     print(tweets)
 
     with open('tweets') as json_file:
