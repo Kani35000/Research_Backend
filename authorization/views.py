@@ -110,22 +110,22 @@ def timeline_in_json(request):
     # Make the API request
     response = requests.get(api_url, headers=headers)
     twitter_data = response.json()
-        return render(request, 'authorization/timeline.html', {'twitter_data': twitter_data})
+    return render(request, 'authorization/timeline.html', {'twitter_data': twitter_data})
 
 
-def timeline(request):
-    url = "https://api.twitter.com/2/tweets"
-    # response = requests.get(url)
-    tweets = timeline_in_json(request)
-    print(tweets)
+# def timeline(request):
+#     url = "https://api.twitter.com/2/tweets"
+#     # response = requests.get(url)
+#     tweets = timeline_in_json(request)
+#     print(tweets)
 
-    with open('tweets') as json_file:
-        data_list = json.load(json_file)
+#     with open('tweets') as json_file:
+#         data_list = json.load(json_file)
 
-        tweet_data_frame = pd.DataFrame.from_dict(data_list)
-        print(tweet_data_frame)
-        print(data_list)
-        return render(request, 'authorization/timeline.html', {'tweet_data_frame': tweet_data_frame})   
+#         tweet_data_frame = pd.DataFrame.from_dict(data_list)
+#         print(tweet_data_frame)
+#         print(data_list)
+#         return render(request, 'authorization/timeline.html', {'tweet_data_frame': tweet_data_frame})   
 
 # params = {
 #     "start_time": "2023-01-01T00:00:00Z",
