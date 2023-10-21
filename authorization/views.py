@@ -38,7 +38,7 @@ def twitter_login(request):
 def twitter_callback(request):
     if 'denied' in request.GET:
         messages.add_message(request, messages.ERROR, 'Unable to login or login canceled. Please try again.')
-        return render(request, 'authorization/aboutresearch.html')
+        return render(request, 'authorization/error_page.html')
     twitter_api = TwitterAPI()
     oauth_verifier = request.GET.get('oauth_verifier')
     oauth_token = request.GET.get('oauth_token')
@@ -69,18 +69,15 @@ def twitter_callback(request):
                     twitter_data = response.json()
                     return render(request, 'authorization/home.html', {'user': user}, {'twitter_data': twitter_data})
                     
-            # else:
-            #     messages.add_message(request, messages.ERROR, 'Unable to get profile details. Please try again.')
-            #     return render(request, 'authorization/error_page.html')
-            return render(request, 'authorization/home.html', {'user': user}, {'twitter_data': twitter_data})
-        # else:
-        #     messages.add_message(request, messages.ERROR, 'Unable to get access token. Please try again.')
-        #     return render(request, 'authorization/error_page.html')
-        return render(request, 'authorization/home.html', {'user': user}, {'twitter_data': twitter_data})
-    # else:
-    #     messages.add_message(request, messages.ERROR, 'Unable to retrieve access token. Please try again.')
-    #     return render(request, 'authorization/error_page.html')
-    return render(request, 'authorization/home.html', {'user': user}, {'twitter_data': twitter_data})
+            else:
+                messages.add_message(request, messages.ERROR, 'Unable to get profile details. Please try again.')
+                return render(request, 'authorization/error_page.html')
+        else:
+            messages.add_message(request, messages.ERROR, 'Unable to get access token. Please try again.')
+            return render(request, 'authorization/error_page.html')
+    else:
+        messages.add_message(request, messages.ERROR, 'Unable to retrieve access token. Please try again.')
+        return render(request, 'authorization/error_page.html')
 
 
 @login_required
