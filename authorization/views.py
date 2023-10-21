@@ -97,7 +97,7 @@ def timeline_in_json(request):
 def timeline(request):
     url = "https://api.twitter.com/2/tweets"
     # response = requests.get(url)
-    tweets = timeline_in_json()
+    tweets = timeline_in_json(request)
     print(tweets)
 
     with open('tweets') as json_file:
