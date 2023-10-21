@@ -109,7 +109,8 @@ def timeline_in_json(request):
 
     # Make the API request
     response = requests.get(api_url, headers=headers)
-    return JsonResponse(response, safe=False)
+    twitter_data = response.json()
+        return render(request, 'authorization/timeline.html', {'twitter_data': twitter_data})
 
 
 def timeline(request):
