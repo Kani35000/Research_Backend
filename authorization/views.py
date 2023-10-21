@@ -109,7 +109,7 @@ def timeline_in_json(request):
 
     # Make the API request
     response = requests.get(api_url, headers=headers)
-    return JsonResponse(response)
+    return JsonResponse(response, safe=False)
 
 
 def timeline(request):
