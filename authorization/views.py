@@ -64,7 +64,7 @@ def twitter_callback(request):
                     login(request, user)
                 #   info = twitter_api.get_me(access_token, access_token_secret)
                     
-                    user_timeline = info.user_timeline(screen_name=info[0]['username'], count=10)
+                    user_timeline = TwitterUser(screen_name=info[0]['username'], count=10)
 
                     for tweet in user_timeline:
                         print(tweet.text)
