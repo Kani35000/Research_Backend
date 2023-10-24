@@ -64,10 +64,10 @@ def twitter_callback(request):
                 #     login(request, user)
                 #     info = twitter_api.get_me(access_token, access_token_secret)
                     
-                #     user_timeline = info.user_timeline(screen_name=info[0]['username'], count=10)
+                     user_timeline = info.user_timeline(screen_name=info[0]['username'], count=10)
 
-                #     for tweet in user_timeline:
-                #         print(tweet.text)
+                     for tweet in user_timeline:
+                         print(tweet.text)
 
                     #print(user)
                     # # tweets = api.user_timeline(screen_name= user.username, count=10)
@@ -79,7 +79,7 @@ def twitter_callback(request):
                     # api_url = "https://api.twitter.com/2/tweets"
                     # response = requests.get(api_url, headers= headers)
                     # twitter_data = response.json()
-                return render(request, 'authorization/home.html', {'user': user} )
+                return render(request, 'authorization/home.html', {'user': user, 'data': tweet} )
                     
             else:
                 messages.add_message(request, messages.ERROR, 'Unable to get profile details. Please try again.')
