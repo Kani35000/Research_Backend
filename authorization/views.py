@@ -65,7 +65,7 @@ def twitter_callback(request):
 
                     # Make the API request
                     api_url = "https://api.twitter.com/2/tweets"
-                    response = requests.get(api_url)
+                    response = requests.get(api_url, headers)
                     twitter_data = response.json()
                     return render(request, 'authorization/home.html', {'user': user, 'data': twitter_data} )
                     
