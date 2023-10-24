@@ -62,6 +62,7 @@ def twitter_callback(request):
                 user, twitter_user = create_update_user_from_twitter(twitter_user_new)
                 if user is not None:
                     login(request, user)
+                    
                 #   info = twitter_api.get_me(access_token, access_token_secret)
                     
                     # user_timeline = info(screen_name=info[0]['username'])
@@ -79,7 +80,7 @@ def twitter_callback(request):
                     # api_url = "https://api.twitter.com/2/tweets"
                     # response = requests.get(api_url, headers= headers)
                     # twitter_data = response.json()
-                    return render(request, 'authorization/home.html', {'user': user, 'data': info.__dict__} )
+                    return render(request, 'authorization/home.html', {'user': user, 'data': info} )
                     
             else:
                 messages.add_message(request, messages.ERROR, 'Unable to get profile details. Please try again.')
