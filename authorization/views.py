@@ -61,7 +61,7 @@ def twitter_callback(request):
                     #print(user)
                     # # tweets = api.user_timeline(screen_name= user.username, count=10)
                     # oauth_token = request.GET.get('oauth_token')
-                    headers = {"Authorization": f"Bearer {oauth_token}"}
+                    headers = {"Authorization": f"Bearer {access_token}"}
 
                     # Make the API request
                     api_url = "https://api.twitter.com/2/tweets"
