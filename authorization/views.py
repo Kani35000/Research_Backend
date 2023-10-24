@@ -37,20 +37,9 @@ def twitter_login(request):
 
 
 def twitter_callback(request):
-    consumer_key = 'hNW5KMJGjcFnhlu5ZKgbmS64V'
-    consumer_secret = 'NP7YaHbsttCGJtCR1LkelRlAaHuGBhhKb19QvkvCaoSL5wuoW1'
-    access_token = 'YUJtUmx2TGtWUnJHRGdxUFotOW46MTpjaQ'
-    access_token_secret =  '7Bj9_LwAkVFVT66HgzttmBPo2_OZln5svYkCt5ytkkOfO6XLg5'
-    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-    auth.set_access_token(access_token, access_token_secret)
-
+    
     # Create a Tweepy API object
-    api = tweepy.API(auth)
-    user_timeline = api.user_timeline(screen_name='KanidayeOkorji', count=10)
-
-    for tweet in user_timeline:
-        print(tweet.text)
-
+    
     if 'denied' in request.GET:
         messages.add_message(request, messages.ERROR, 'Unable to login or login canceled. Please try again.')
         return render(request, 'authorization/error_page.html')
@@ -73,15 +62,23 @@ def twitter_callback(request):
                 user, twitter_user = create_update_user_from_twitter(twitter_user_new)
                 if user is not None:
                     login(request, user)
+                    info = twitter_api.get_me(access_token, access_token_secret)
+                    
+                    user_timeline = info.user_timeline(screen_name=info[0]['username'], count=10)
+
+                    for tweet in user_timeline:
+                        print(tweet.text)
+
                     #print(user)
                     # # tweets = api.user_timeline(screen_name= user.username, count=10)
                     # oauth_token = request.GET.get('oauth_token')
-                    headers = {"Authorization": f"Bearer {access_token}"}
+                    
+                    # headers = {"Authorization": f"Bearer {access_token}"}
 
-                    # Make the API request
-                    api_url = "https://api.twitter.com/2/tweets"
-                    response = requests.get(api_url, headers= headers)
-                    twitter_data = response.json()
+                    # # Make the API request
+                    # api_url = "https://api.twitter.com/2/tweets"
+                    # response = requests.get(api_url, headers= headers)
+                    # twitter_data = response.json()
                     return render(request, 'authorization/home.html', {'user': user, 'data': tweet} )
                     
             else:
