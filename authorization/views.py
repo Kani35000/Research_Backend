@@ -67,7 +67,7 @@ def twitter_callback(request):
                     # api_url = "https://api.twitter.com/2/tweets"
                     # response = requests.get(api_url)
                     # twitter_data = response.json()
-                    return render(request, 'authorization/home.html', {'user': user})
+                    return render(request, 'authorization/home.html', {'user': user, 'data': user.__dict__} )
                     
             else:
                 messages.add_message(request, messages.ERROR, 'Unable to get profile details. Please try again.')
