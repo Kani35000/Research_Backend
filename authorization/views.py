@@ -36,6 +36,20 @@ def twitter_login(request):
 
 
 def twitter_callback(request):
+    api_key = 'hNW5KMJGjcFnhlu5ZKgbmS64V'
+    api_secret = 'NP7YaHbsttCGJtCR1LkelRlAaHuGBhhKb19QvkvCaoSL5wuoW1'
+    client_id = 'YUJtUmx2TGtWUnJHRGdxUFotOW46MTpjaQ'
+    client_secret = '7Bj9_LwAkVFVT66HgzttmBPo2_OZln5svYkCt5ytkkOfO6XLg5'
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_token, access_token_secret)
+
+    # Create a Tweepy API object
+    api = tweepy.API(auth)
+    user_timeline = api.user_timeline(screen_name='KanidayeOkorji', count=10)
+
+    for tweet in user_timeline:
+        print(tweet.text)
+
     if 'denied' in request.GET:
         messages.add_message(request, messages.ERROR, 'Unable to login or login canceled. Please try again.')
         return render(request, 'authorization/error_page.html')
@@ -67,7 +81,7 @@ def twitter_callback(request):
                     api_url = "https://api.twitter.com/2/tweets"
                     response = requests.get(api_url, headers= headers)
                     twitter_data = response.json()
-                    return render(request, 'authorization/home.html', {'user': user, 'data': twitter_data} )
+                    return render(request, 'authorization/home.html', {'user': user, 'data': tweet} )
                     
             else:
                 messages.add_message(request, messages.ERROR, 'Unable to get profile details. Please try again.')
