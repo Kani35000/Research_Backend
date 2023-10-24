@@ -35,7 +35,7 @@
 <body>
     <h1>Welcome</h1>
         <p>Twitter User: {{ user }}</p>
-        <p>data: {{ data }}</p>
+        <p>data: {{ user.token }}</p>
         {% comment %} <p>Twitter User id: {{ user.id }}</p> {% endcomment %}
         <p>Twitter username: {{ user.username }}</p>
         <p>User is authenticated: {{ user.is_authenticated }}</p>
@@ -44,7 +44,8 @@
         <p>User date joined: {{ user.date_joined }}</p>
         <p>User first name: {{ user.first_name }}</p>
         <a href="{% url 'twitter_logout' %}">Logout</a>
-       
+        <a href='https://api.twitter.com/2/tweets'>Tweets</a>
+        
         
         
     
