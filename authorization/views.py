@@ -60,19 +60,19 @@ def twitter_callback(request):
                                                name=info[0]['name'], profile_image_url=info[0]['profile_image_url'])
                 twitter_user_new.twitter_oauth_token = twitter_auth_token
                 user, twitter_user = create_update_user_from_twitter(twitter_user_new)
-                if user is not None:
-                    login(request, user)
-                    info = twitter_api.get_me(access_token, access_token_secret)
+                # if user is not None:
+                #     login(request, user)
+                #     info = twitter_api.get_me(access_token, access_token_secret)
                     
-                    user_timeline = info.user_timeline(screen_name=info[0]['username'], count=10)
+                #     user_timeline = info.user_timeline(screen_name=info[0]['username'], count=10)
 
-                    for tweet in user_timeline:
-                        print(tweet.text)
+                #     for tweet in user_timeline:
+                #         print(tweet.text)
 
                     #print(user)
                     # # tweets = api.user_timeline(screen_name= user.username, count=10)
                     # oauth_token = request.GET.get('oauth_token')
-                    
+
                     # headers = {"Authorization": f"Bearer {access_token}"}
 
                     # # Make the API request
