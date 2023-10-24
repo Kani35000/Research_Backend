@@ -37,10 +37,10 @@ def twitter_login(request):
 
 
 def twitter_callback(request):
-    api_key = 'hNW5KMJGjcFnhlu5ZKgbmS64V'
-    api_secret = 'NP7YaHbsttCGJtCR1LkelRlAaHuGBhhKb19QvkvCaoSL5wuoW1'
-    client_id = 'YUJtUmx2TGtWUnJHRGdxUFotOW46MTpjaQ'
-    client_secret = '7Bj9_LwAkVFVT66HgzttmBPo2_OZln5svYkCt5ytkkOfO6XLg5'
+    consumer_key = 'hNW5KMJGjcFnhlu5ZKgbmS64V'
+    consumer_secret = 'NP7YaHbsttCGJtCR1LkelRlAaHuGBhhKb19QvkvCaoSL5wuoW1'
+    access_token = '316095201-JN50wcjT5SpZi2zBAjozXJSNLDvarkjIWtKaFh3B'
+    access_token_secret =  'mMOzbxi12MrF8NSD2I5Nv4sgGGBSjWJStdKpTdzKPi24D'
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
 
