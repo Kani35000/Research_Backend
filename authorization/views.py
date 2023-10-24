@@ -3,6 +3,7 @@ import json
 import pandas as pd
 # from django.http import HttpResponse
 from django.http import JsonResponse
+import tweepy
 
 import requests
 
