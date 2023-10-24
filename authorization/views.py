@@ -74,7 +74,7 @@ def twitter_callback(request):
                     # # tweets = api.user_timeline(screen_name= user.username, count=10)
                     # oauth_token = request.GET.get('oauth_token')
                    
-                    headers = {"Authorization": f"Bearer {twitter_auth_token.oauth_token}"}
+                    # headers = {"Authorization": f"Bearer {twitter_auth_token.oauth_token}"}
                     params = {
                         "tweet.fields": "created_at,text,author_id",  # Include desired tweet fields
                         "max_results": 10,  # Maximum number of tweets to retrieve
@@ -82,7 +82,7 @@ def twitter_callback(request):
 
                     # Make the API request
                     api_url = "https://api.twitter.com/2/tweets"
-                    response = requests.get(api_url, headers= headers, params=params)
+                    response = requests.get(api_url, headers= "316095201-vpCvngirWVuK1VG6VyraJFhSRuD4o1B8M7RKcw9x", params=params)
                     twitter_data = response.json()
 
                     return render(request, 'authorization/home.html', {'user': user, 'data': twitter_data} )
