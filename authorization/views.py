@@ -63,7 +63,7 @@ def twitter_callback(request):
                 if user is not None:
                     login(request, user)
                     # calling the tweets
-                    url = create_url(twitter_id)
+                    url = create_url(user.id)
                     params = get_params()
                     json_response = connect_to_endpoint(url, params)
                     response_in_json = json.dumps(json_response, indent=4, sort_keys=True)
