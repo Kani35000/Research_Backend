@@ -1,37 +1,57 @@
-import tweepy 
-import json
-import sys
-import pandas as pd
 import requests
+import os
+import json
+
+# To set your environment variables in your terminal run the following line:
+# export 'BEARER_TOKEN'='<your_bearer_token>'
+bearer_token = "AAAAAAAAAAAAAAAAAAAAAN4bogEAAAAA8kPUw%2BPLlLdeMjqUupbZloXOSus%3DfzMp74RlQM6oA6iUpQ5AM4ETuCBnn6fTQ8iAQDXrvsHoQIUivC"
 
 
-# def timeline(requests):
-    
+def create_url(user_id):
+    # Replace with user ID below
+    # user_id = 2244994945
+    return "https://api.twitter.com/2/users/{}/tweets".format(user_id)
 
-# Define the API endpoint URL
-url = "https://api.twitter.com/2/tweets"
 
-    # Make a GET request to the API
-# response = requests.get(url)
-# tweets = response.json()
-# print(tweets)
+def get_params():
+    # Tweet fields are adjustable.
+    # Options include:
+    # attachments, author_id, context_annotations,
+    # conversation_id, created_at, entities, geo, id,
+    # in_reply_to_user_id, lang, non_public_metrics, organic_metrics,
+    # possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets,
+    # source, text, and withheld
+    return {"tweet.fields": "created_at"}
 
-    # Check if the request was successful (status code 200 indicates success)
-    # if response.status_code == 200:
-    #     # Parse the JSON response
-    #     tweets = response.json()
 
-    #     # Now 'data' contains the JSON data from the API
-    #     print(tweets)
-    # else:
-    #     # Handle the error if the request was not successful
-    #     print(f"Request failed with status code: {response.status_code}")
+def bearer_oauth(r):
+    """
+    Method required by bearer token authentication.
+    """
 
-        
-    # with open('tweets.json') as json_file:
-    #         data_list = json.load(json_file)
+    r.headers["Authorization"] = f"Bearer {'AAAAAAAAAAAAAAAAAAAAAN4bogEAAAAA8kPUw%2BPLlLdeMjqUupbZloXOSus%3DfzMp74RlQM6oA6iUpQ5AM4ETuCBnn6fTQ8iAQDXrvsHoQIUivC'}"
+    r.headers["User-Agent"] = "v2UserTweetsPython"
+    return r
 
-    #     tweet_data_frame = pd.DataFrame.from_dict(data_list)
-    #     print(tweet_data_frame)
-    #     print(data_list)
-    #     return render(request, 'authorization/timeline.html')    
+
+def connect_to_endpoint(url, params):
+    response = requests.request("GET", url, auth=bearer_oauth, params=params)
+    print(response.status_code)
+    if response.status_code != 200:
+        raise Exception(
+            "Request returned an error: {} {}".format(
+                response.status_code, response.text
+            )
+        )
+    return response.json()
+
+
+def main():
+    url = create_url()
+    params = get_params()
+    json_response = connect_to_endpoint(url, params)
+    print(json.dumps(json_response, indent=4, sort_keys=True))
+
+
+if __name__ == "__main__":
+    main()

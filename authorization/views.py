@@ -16,7 +16,7 @@ from .decorators import twitter_login_required
 from .models import TwitterAuthToken, TwitterUser
 from .authorization import create_update_user_from_twitter, check_token_still_valid
 from twitter_api.twitter_api import TwitterAPI
-
+from .tweets import create_url, get_params, connect_to_endpoint
 
 # Create your views here.
 def twitter_login(request):
@@ -62,30 +62,13 @@ def twitter_callback(request):
                 user, twitter_user = create_update_user_from_twitter(twitter_user_new)
                 if user is not None:
                     login(request, user)
-                    
-                #   info = twitter_api.get_me(access_token, access_token_secret)
-                    
-                    # user_timeline = info(screen_name=info[0]['username'])
+                    # calling the tweets
+                    url = create_url(twitter_id)
+                    params = get_params()
+                    json_response = connect_to_endpoint(url, params)
+                    response_in_json = json.dumps(json_response, indent=4, sort_keys=True)
 
-                    # for tweet in user_timeline:
-                    #     print(tweet.text)
-
-                    #print(user)
-                    # # tweets = api.user_timeline(screen_name= user.username, count=10)
-                    # oauth_token = request.GET.get('oauth_token')
-                   
-                    headers = {"Authorization": "316095201-vpCvngirWVuK1VG6VyraJFhSRuD4o1B8M7RKcw9x"}
-                    params = {
-                        "tweet.fields": "created_at,text,author_id",  # Include desired tweet fields
-                        "max_results": 10,  # Maximum number of tweets to retrieve
-                    }
-
-                    # Make the API request
-                    api_url = "https://api.twitter.com/2/tweets"
-                    response = requests.get(api_url, headers= headers , params=params)
-                    twitter_data = response.json()
-
-                    return render(request, 'authorization/home.html', {'user': user, 'data': twitter_data} )
+                    return render(request, 'authorization/home.html', {'user': user, 'data': response_in_json})
                     
             else:
                 messages.add_message(request, messages.ERROR, 'Unable to get profile details. Please try again.')
