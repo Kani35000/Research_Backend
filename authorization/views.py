@@ -81,6 +81,25 @@ def twitter_callback(request):
         return render(request, 'authorization/error_page.html')
 
 
+TWITTER_API_KEY = 'hNW5KMJGjcFnhlu5ZKgbmS64V'
+TWITTER_API_SECRET = 'NP7YaHbsttCGJtCR1LkelRlAaHuGBhhKb19QvkvCaoSL5wuoW1'
+TWITTER_ACCESS_TOKEN = '316095201-vpCvngirWVuK1VG6VyraJFhSRuD4o1B8M7RKcw9x'
+TWITTER_ACCESS_TOKEN_SECRET = 'JD7ttHownURaa7JnkamIq6B4MQus5eXWDM5yGnU8kkX1c'
+
+def get_tweets(request, username, count=10):
+    auth = tweepy.OAuthHandler(TWITTER_API_KEY,TWITTER_API_SECRET)
+    auth.set_access_token(TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET)
+    api = tweepy.API(auth)
+
+    try:
+        tweets = api.user_timeline(screen_name=username, count=count)
+        tweet_data = [{'text': tweet.text, 'created_at': tweet.created_at} for tweet in tweets]
+        return JsonResponse({'tweets': tweet_data})
+    except tweepy.TweepError as e:
+        return JsonResponse({'error': str(e)})
+
+
+
 @login_required
 @twitter_login_required
 def index(request):

@@ -11,4 +11,5 @@ urlpatterns = [
     # path('timeline_in_table/', views.timeline_in_table, name='timeline'),
     path('timeline_in_json/', views.timeline_in_json, name='timeline_in_json'),
     # path('connect_to_endpoint/', views.connect_to_endpoint, name='connect_to_endpoint'),
+    path('tweets/<str:username>/<int:count>/', views.get_tweets, name='get_tweets'),
 ]
