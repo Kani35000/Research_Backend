@@ -5,9 +5,9 @@ import os
 
 class TwitterAPI:
     def __init__(self):
-        self.api_key = 'hNW5KMJGjcFnhlu5ZKgbmS64V'
+        self.api_key = '5bhCPf1JSdAH272oBX3HbRK3F'
 
-        self.api_secret = 'NP7YaHbsttCGJtCR1LkelRlAaHuGBhhKb19QvkvCaoSL5wuoW1'
+        self.api_secret = 'UTNRXOsyKwyC2lBC4GJzoLgIkPvH5AcGmbK3SaerptwdEQtdiu'
         self.client_id = 'YUJtUmx2TGtWUnJHRGdxUFotOW46MTpjaQ'
         self.client_secret = '7Bj9_LwAkVFVT66HgzttmBPo2_OZln5svYkCt5ytkkOfO6XLg5'
         self.oauth_callback_url = 'https://researchnortheastern-f0da7b5714f0.herokuapp.com/twitter_callback/'

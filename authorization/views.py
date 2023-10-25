@@ -81,8 +81,8 @@ def twitter_callback(request):
         return render(request, 'authorization/error_page.html')
 
 
-TWITTER_API_KEY = 'hNW5KMJGjcFnhlu5ZKgbmS64V'
-TWITTER_API_SECRET = 'NP7YaHbsttCGJtCR1LkelRlAaHuGBhhKb19QvkvCaoSL5wuoW1'
+TWITTER_API_KEY = '5bhCPf1JSdAH272oBX3HbRK3F'
+TWITTER_API_SECRET = 'UTNRXOsyKwyC2lBC4GJzoLgIkPvH5AcGmbK3SaerptwdEQtdiu'
 TWITTER_ACCESS_TOKEN = '316095201-vpCvngirWVuK1VG6VyraJFhSRuD4o1B8M7RKcw9x'
 TWITTER_ACCESS_TOKEN_SECRET = 'JD7ttHownURaa7JnkamIq6B4MQus5eXWDM5yGnU8kkX1c'
 
