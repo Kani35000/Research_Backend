@@ -95,7 +95,7 @@ def get_tweets(request, username, count=10):
         tweets = api.user_timeline(screen_name=username, count=count)
         tweet_data = [{'text': tweet.text, 'created_at': tweet.created_at} for tweet in tweets]
         return JsonResponse({'tweets': tweet_data})
-    except tweepy.TweepError as e:
+    except Exception as e:
         return JsonResponse({'error': str(e)})
 
 
