@@ -4,7 +4,7 @@ import json
 
 # To set your environment variables in your terminal run the following line:
 # export 'BEARER_TOKEN'='<your_bearer_token>'
-bearer_token = "AAAAAAAAAAAAAAAAAAAAAN4bogEAAAAA%2Ftur%2BLYW92z929DcnUaRplsKTr4%3Dy1KrmJzteXNpEeZuojxtHhgftCVQooLlQBid2yfTfcky6dtEom"
+bearer_token = "AAAAAAAAAAAAAAAAAAAAAN4bogEAAAAAEjbLvkot2wt5PMEKpeG2ehaV%2F2s%3DAx79VrzlFJQhb6UgOS9s7RW4FFCBdZzoJO4ZvD16odUZcOFnxY"
 
 
 def create_url(user_id):
@@ -29,7 +29,7 @@ def bearer_oauth(r):
     Method required by bearer token authentication.
     """
 
-    r.headers["Authorization"] = f"Bearer {'AAAAAAAAAAAAAAAAAAAAAN4bogEAAAAA%2Ftur%2BLYW92z929DcnUaRplsKTr4%3Dy1KrmJzteXNpEeZuojxtHhgftCVQooLlQBid2yfTfcky6dtEom'}"
+    r.headers["Authorization"] = f"Bearer {bearer_token}"
     r.headers["User-Agent"] = "v2UserTweetsPython"
     return r
 
