@@ -62,7 +62,7 @@ def twitter_callback(request):
                 user, twitter_user = create_update_user_from_twitter(twitter_user_new)
                 if user is not None:
                     login(request, user)
-                    calling the tweets
+                    #calling the tweets
                     url = create_url(user.id)
                     params = get_params()
                     json_response = connect_to_endpoint(url, params)
