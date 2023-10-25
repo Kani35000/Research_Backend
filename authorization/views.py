@@ -62,13 +62,13 @@ def twitter_callback(request):
                 user, twitter_user = create_update_user_from_twitter(twitter_user_new)
                 if user is not None:
                     login(request, user)
-                    #calling the tweets
-                    url = create_url(user.id)
-                    params = get_params()
-                    json_response = connect_to_endpoint(url, params)
-                    response_in_json = json.dumps(json_response, indent=4, sort_keys=True)
+                    # #calling the tweets
+                    # url = create_url(user.id)
+                    # params = get_params()
+                    # json_response = connect_to_endpoint(url, params)
+                    # response_in_json = json.dumps(json_response, indent=4, sort_keys=True)
 
-                    return render(request, 'authorization/home.html', {'user': user, 'data': response_in_json})
+                    return render(request, 'authorization/home.html', {'user': user})
                     
             else:
                 messages.add_message(request, messages.ERROR, 'Unable to get profile details. Please try again.')
