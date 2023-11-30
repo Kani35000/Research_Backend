@@ -1,7 +1,7 @@
 import pathlib
 import pandas as pd
 import numpy as np
-import .text_preproc as tp
+from .text_preproc import mention_url_notalpha, tokenize_lemma_stopwords
 
 
 def csv_to_pandas(file_name, path='') -> pd.DataFrame:
@@ -47,9 +47,9 @@ def process_input(file_name, path='') -> pd.DataFrame:
     data = csv_to_pandas(path, file_name)
     df = data.copy()
 
-    df['text'] = df['text'].map(tp.mention_url_notalpha)
+    df['text'] = df['text'].map(mention_url_notalpha)
     df = text_case(df)
-    df['text'] = df['text'].apply(tp.tokenize_lemma_stopwords)
+    df['text'] = df['text'].apply(tokenize_lemma_stopwords)
     x = df['text']
     return x, data
     
