@@ -8,7 +8,7 @@ import tweepy
 import requests
 
 #importing classifier
-from app import predict
+from .app import predict
 
 from create_csv import create_csv
 
