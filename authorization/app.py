@@ -1,5 +1,5 @@
 import pickle
-from import_data import process_input
+from .import_data import process_input
 import numpy as np
 import pandas as pd
 
