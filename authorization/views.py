@@ -7,6 +7,12 @@ import tweepy
 
 import requests
 
+#importing classifier
+from app import predict
+
+from create_csv import create_csv
+
+
 
 from django.contrib import messages
 from django.contrib.auth import login, logout
@@ -67,6 +73,17 @@ def twitter_callback(request):
                     # params = get_params()
                     # json_response = connect_to_endpoint(url, params)
                     # response_in_json = json.dumps(json_response, indent=4, sort_keys=True)
+                    # if this is a POST request we need to process the form data
+                    if request.method == "POST":
+                        # create a form instance and populate it with data from the request:
+                        tweets = request.POST.get('tweets')
+                        # reminder: recheck after deploying
+                        create_csv(tweets)
+                        result = predict('tweet.csv')
+                        result.to_csv('predictions.csv', index=False) 
+                        # return HttpResponseRedirect("/thanks/")
+                        console.log('check_news post')
+                    
 
                     return render(request, 'authorization/home.html', {'user': user})
                     

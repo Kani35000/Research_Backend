@@ -46,9 +46,16 @@
         <a href="{% url 'twitter_logout' %}">Logout</a>
         <a href='https://api.twitter.com/2/tweets'>Tweets</a>
         
-        
-        
-    
+      <form action="/twitter_callback/" method="post">  
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="tweets">Check if tweet is news</label>
+          <textarea class="form-control" id="tweets" name="tweets" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form> 
+         
+      <a href=""><h1>Download csv</h1></a>
     <a href=""><h1>Twitter Timeline In Table</h1></a>
     <a href=""><h1>Twitter Timeline In Json</h1></a>
     <a class="twitter-timeline" href="https://twitter.com/{{ user.username }}?ref_src=twsrc%5Etfw">Tweets by {{ user.username }}</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
