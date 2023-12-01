@@ -10,7 +10,6 @@ configobj==5.0.8
 configparser==6.0.0
 cryptography==41.0.4
 decorator==5.1.1
-decouple==0.0.7
 defusedxml==0.8.0rc2
 distlib==0.3.7
 dj-database-url==2.1.0
@@ -55,6 +54,7 @@ Pygments==2.16.1
 PyJWT==2.8.0
 pyparsing==3.1.1
 python-dateutil==2.8.2
+python-decouple==3.8
 python-dotenv==1.0.0
 python-openid==2.2.5
 python-social-auth==0.3.6
