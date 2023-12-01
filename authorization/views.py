@@ -81,9 +81,12 @@ def twitter_callback(request):
                         create_csv(tweets)
                         result = predict('tweet.csv')
                         result.to_csv('predictions.csv', index=False) 
-                        # return HttpResponseRedirect("/thanks/")
-                        console.log('check_news post')
-                    
+                        file_path = 'predictions.csv'
+                        df = pd.read_csv(file_path)
+                        if df.loc[row_index, 'predictions'] == 1:
+                            text = "This is News"
+                            console.log(text)
+                            return render(request, 'authorization/home.html', {'user': user}, {'text', text})
 
                     return render(request, 'authorization/home.html', {'user': user})
                     

@@ -35,11 +35,15 @@
 <body>
 
   <div class="container">
-        <h1>Welcome {{ user.username }}</h1>
+    <br>
+    {% if user.is_authenticated %}
+    <h1>Welcome {{ user.username }}!</h1>
+    {% endif %}
+        
 
         <br>
         <br>
-        <p>Twitter User: {{ user }}</p>
+        
         
         {% comment %} <p>Twitter User id: {{ user.id }}</p> {% endcomment %}
         <p>Twitter username: {{ user.username }}</p>
@@ -54,13 +58,18 @@
         <br>
         <br>
         <br>
-        
+      
+      {% if text %}
+      <h1> {{ text }}!</h1>
+      {% endif %}
+      
       <form action="/twitter_callback/" method="post">  
         {% csrf_token %}
         <div class="form-group">
           <label for="tweets">Check if tweet is news</label>
           <textarea class="form-control" id="tweets" name="tweets" rows="3" required></textarea>
         </div>
+        <br>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form> 
          
