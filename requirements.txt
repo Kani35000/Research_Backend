@@ -6,7 +6,9 @@ charset-normalizer==3.3.0
 cryptography==41.0.4
 decorator==5.1.1
 defusedxml==0.8.0rc2
+dj-database-url==2.1.0
 Django==4.2.6
+django-heroku==0.3.1
 executing==2.0.1
 gunicorn==21.2.0
 idna==3.4
@@ -19,6 +21,7 @@ parso==0.8.3
 pexpect==4.8.0
 Pillow==10.0.1
 prompt-toolkit==3.0.41
+psycopg2==2.9.9
 psycopg2-binary==2.9.9
 ptyprocess==0.7.0
 pure-eval==0.2.2
@@ -35,5 +38,7 @@ social-auth-core==4.4.2
 sqlparse==0.4.4
 stack-data==0.6.3
 traitlets==5.13.0
+typing_extensions==4.8.0
 urllib3==2.0.7
 wcwidth==0.2.10
+whitenoise==6.6.0
