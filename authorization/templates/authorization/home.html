@@ -35,9 +35,12 @@
 <body>
 
   <div class="container">
-        <h1>Welcome</h1>
+        <h1>Welcome {{ user.username }}</h1>
+
+        <br>
+        <br>
         <p>Twitter User: {{ user }}</p>
-        <p>data: {{ data }}</p>
+        
         {% comment %} <p>Twitter User id: {{ user.id }}</p> {% endcomment %}
         <p>Twitter username: {{ user.username }}</p>
         <p>User is authenticated: {{ user.is_authenticated }}</p>
@@ -46,9 +49,11 @@
         <p>User date joined: {{ user.date_joined }}</p>
         <p>User first name: {{ user.first_name }}</p>
         <a href="{% url 'twitter_logout' %}">Logout</a>
-        <a href='https://api.twitter.com/2/tweets'>Tweets</a>
+        {% comment %} <a href='https://api.twitter.com/2/tweets'>Tweets</a> {% endcomment %}
 
-  
+        <br>
+        <br>
+        <br>
         
       <form action="/twitter_callback/" method="post">  
         {% csrf_token %}
@@ -59,9 +64,10 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </form> 
          
+      <br>
+      <br>
+      <br>
     
-    <a href=""><h1>Twitter Timeline In Table</h1></a>
-    <a href=""><h1>Twitter Timeline In Json</h1></a>
     <a class="twitter-timeline" href="https://twitter.com/{{ user.username }}?ref_src=twsrc%5Etfw">Tweets by {{ user.username }}</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
     
     
