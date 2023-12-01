@@ -33,6 +33,7 @@
         </div>
       </nav>
 <body>
+  <div>
     <h1>Welcome</h1>
         <p>Twitter User: {{ user }}</p>
         <p>data: {{ data }}</p>
@@ -45,6 +46,8 @@
         <p>User first name: {{ user.first_name }}</p>
         <a href="{% url 'twitter_logout' %}">Logout</a>
         <a href='https://api.twitter.com/2/tweets'>Tweets</a>
+
+  </div>
         
       <form action="/twitter_callback/" method="post">  
         {% csrf_token %}
@@ -55,7 +58,7 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </form> 
          
-      <a href=""><h1>Download csv</h1></a>
+    
     <a href=""><h1>Twitter Timeline In Table</h1></a>
     <a href=""><h1>Twitter Timeline In Json</h1></a>
     <a class="twitter-timeline" href="https://twitter.com/{{ user.username }}?ref_src=twsrc%5Etfw">Tweets by {{ user.username }}</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
